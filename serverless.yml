@@ -1,0 +1,16 @@
+service: amp-validator
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: v1
+  region: us-east-1
+
+functions:
+  validate:
+    handler: handler.validate
+    memorySize: 512
+    events:
+      - http:
+          path: validate
+          method: get
