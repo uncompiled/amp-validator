@@ -7,7 +7,7 @@ module.exports.validate = (event, context, callback) => {
   const docUrl = event.query.url
   request(docUrl, (err, resp, body) => {
     if (err) {
-      callback(null, {
+      return callback(null, {
         url: docUrl,
         status: 'FAIL',
         errors: [{
@@ -15,15 +15,14 @@ module.exports.validate = (event, context, callback) => {
           message: 'Document could not be retrieved.'
         }]
       })
-    } else {
-      amphtmlValidator.getInstance().then(validator => {
-        const result = validator.validateString(body)
-        callback(null, {
-          url: docUrl,
-          status: result.status,
-          errors: result.errors
-        })
-      })
     }
+    amphtmlValidator.getInstance().then(validator => {
+      const result = validator.validateString(body)
+      callback(null, {
+        url: docUrl,
+        status: result.status,
+        errors: result.errors
+      })
+    })
   })
 }
