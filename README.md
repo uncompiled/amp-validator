@@ -1,5 +1,7 @@
 # AMP Validator
 
+[![Code Climate](https://codeclimate.com/github/uncompiled/amp-validator/badges/gpa.svg)](https://codeclimate.com/github/uncompiled/amp-validator)
+
 This is a [Serverless](https://serverless.com/) implementation of the
 [AMPHTML](https://www.ampproject.org/) validator.
 
@@ -13,7 +15,11 @@ and returns the validation results as a JSON response.
 
 # Usage
 
-- GET `/validate?url=<WEBSITE_TO_VALIDATE>`
+```
+GET /validate?url=<WEBSITE_TO_VALIDATE>
+```
+
+## Example Responses
 
 Valid AMP HTML:
 ```
@@ -45,7 +51,7 @@ Invalid URL:
 }
 ```
 
-## Removing the service
+# Removing the service
 
 `serverless remove -v`
 
