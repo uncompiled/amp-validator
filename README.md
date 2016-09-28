@@ -8,18 +8,21 @@ This is a [Serverless](https://serverless.com/) implementation of the
 It uses the official [AMPHTML Validator](https://github.com/ampproject/amphtml/tree/master/validator)
 and returns the validation results as a JSON response.
 
-# Getting Started
+## Getting Started
 
 - `npm install -g serverless`
 - `serverless deploy`
 
-# Usage
+## Endpoint
 
 ```
-GET /validate?url=<WEBSITE_TO_VALIDATE>
+GET /validate
 ```
 
-## Example Responses
+PARAMS:
+- **url** = urlencoded path to an AMP HTML document
+
+### Example Responses
 
 Valid AMP HTML:
 ```
@@ -51,10 +54,10 @@ Invalid URL:
 }
 ```
 
-# Removing the service
+## Removing the service
 
 `serverless remove -v`
 
-# License
+## License
 
 The MIT License (MIT)
