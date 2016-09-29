@@ -30,5 +30,8 @@
     "space": 2,
     "esnext": true,
     "semicolon": false
+  },
+  "devDependencies": {
+    "ava": "^0.16.0"
   }
 }
