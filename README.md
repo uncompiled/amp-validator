@@ -1,5 +1,6 @@
 # AMP Validator
 
+[![Build Status](https://travis-ci.org/uncompiled/amp-validator.svg?branch=master)](https://travis-ci.org/uncompiled/amp-validator)
 [![Code Climate](https://codeclimate.com/github/uncompiled/amp-validator/badges/gpa.svg)](https://codeclimate.com/github/uncompiled/amp-validator)
 
 This is a [Serverless](https://serverless.com/) implementation of the
