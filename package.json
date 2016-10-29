@@ -4,7 +4,7 @@
   "description": "Serverless AMP Validator Service",
   "main": "handler.js",
   "dependencies": {
-    "amphtml-validator": "^1.0.12",
+    "amphtml-validator": "^1.0.14",
     "request": "^2.74.0"
   },
   "scripts": {
@@ -32,6 +32,7 @@
     "semicolon": false
   },
   "devDependencies": {
-    "ava": "^0.16.0"
+    "ava": "^0.16.0",
+    "serverless": "^1.0.3"
   }
 }
