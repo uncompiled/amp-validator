@@ -5,7 +5,7 @@
   "main": "handler.js",
   "dependencies": {
     "amphtml-validator": "^1.0.14",
-    "request": "^2.74.0"
+    "request": "^2.78.0"
   },
   "scripts": {
     "test": "xo && ava"
