@@ -2,4 +2,6 @@ language: node_js
 node_js:
   - "4.3"
 before_install:
-  - npm i -g xo ava
+  - npm install npm@latest -g
+install:
+  - npm install
