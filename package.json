@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "ava": "^0.16.0",
-    "serverless": "^1.0.3"
+    "serverless": "^1.0.3",
+    "xo": "^0.17.0"
   }
 }
