@@ -32,7 +32,7 @@
     "semicolon": false
   },
   "devDependencies": {
-    "ava": "^0.16.0",
+    "ava": "^0.17.0",
     "serverless": "^1.0.3",
     "xo": "^0.17.0"
   }
