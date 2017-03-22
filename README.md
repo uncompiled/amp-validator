@@ -48,10 +48,18 @@ Invalid URL:
 {
   "url": "https://i.am.not.a.website.xyz",
   "status": "FAIL",
-  "errors": [{
-    "severity": "ERROR",
-    "message": "Document could not be retrieved."
-  }]
+  "errors": [
+    {
+      "severity": "ERROR",
+      "message": {
+        "name": "RequestError",
+        "message": "Error: getaddrinfo ENOTFOUND i.am.not.a.website.xyz",
+        "cause": {},
+        "error": {},
+        "options": {}
+      }
+    }
+  ]
 }
 ```
 
