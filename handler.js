@@ -1,28 +1,48 @@
 'use strict'
 
-const request = require('request')
+const Promise = require('bluebird')
+const request = require('request-promise')
 const amphtmlValidator = require('amphtml-validator')
 
-module.exports.validate = (event, context, callback) => {
-  const docUrl = event.query.url
-  request(docUrl, (err, resp, body) => {
-    if (err) {
-      return callback(null, {
-        url: docUrl,
-        status: 'FAIL',
-        errors: [{
-          severity: 'ERROR',
-          message: 'Document could not be retrieved.'
-        }]
-      })
-    }
-    amphtmlValidator.getInstance().then(validator => {
-      const result = validator.validateString(body)
-      callback(null, {
-        url: docUrl,
-        status: result.status,
-        errors: result.errors
-      })
+function sendResult(docUrl, validationResult, callback) {
+  callback(null, {
+    statusCode: 200,
+    body: JSON.stringify({
+      url: docUrl,
+      status: validationResult.status,
+      errors: validationResult.errors
     })
+  })
+}
+
+function sendError(err, docUrl, callback) {
+  return callback(null, {
+    statusCode: 400,
+    body: JSON.stringify({
+      url: docUrl,
+      status: 'FAIL',
+      errors: [{
+        severity: 'ERROR',
+        message: err
+      }]
+    })
+  })
+}
+
+module.exports.validate = (event, context, callback) => {
+  const docUrl = (event.queryStringParameters) ? event.queryStringParameters.url : null
+  if (!docUrl) {
+    sendError('No URL provided', null, callback)
+  }
+
+  const requestPromise = request(docUrl).catch(err => {
+    sendError(err, docUrl, callback)
+  })
+  const validatorPromise = amphtmlValidator.getInstance()
+
+  Promise.all([requestPromise, validatorPromise])
+  .spread((document, validator) => {
+    const validationResult = validator.validateString(document)
+    sendResult(docUrl, validationResult, callback)
   })
 }

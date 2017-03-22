@@ -5,7 +5,9 @@
   "main": "handler.js",
   "dependencies": {
     "amphtml-validator": "^1.0.15",
-    "request": "^2.78.0"
+    "bluebird": "^3.5.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0"
   },
   "scripts": {
     "test": "$(npm bin)/xo && $(npm bin)/ava -v"
@@ -33,7 +35,6 @@
   },
   "devDependencies": {
     "ava": "^0.18.0",
-    "serverless": "^1.0.3",
     "xo": "^0.18.0"
   }
 }
