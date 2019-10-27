@@ -4,10 +4,9 @@
   "description": "Serverless AMP Validator Service",
   "main": "handler.js",
   "dependencies": {
-    "amphtml-validator": "^1.0.15",
-    "bluebird": "^3.5.0",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.0"
+    "amphtml-validator": "^1.0.28",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
   },
   "scripts": {
     "test": "$(npm bin)/xo && $(npm bin)/ava -v"
@@ -34,7 +33,7 @@
     "semicolon": false
   },
   "devDependencies": {
-    "ava": "^0.19.0",
-    "xo": "^0.19.0"
+    "ava": "^2.4.0",
+    "xo": "^0.25.3"
   }
 }

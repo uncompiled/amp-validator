@@ -1,6 +1,5 @@
 'use strict'
 
-const Promise = require('bluebird')
 const request = require('request-promise')
 const amphtmlValidator = require('amphtml-validator')
 
@@ -15,7 +14,7 @@ function sendResult(docUrl, validationResult, callback) {
   })
 }
 
-function sendError(err, docUrl, callback) {
+function sendError(error, docUrl, callback) {
   return callback(null, {
     statusCode: 400,
     body: JSON.stringify({
@@ -23,7 +22,7 @@ function sendError(err, docUrl, callback) {
       status: 'FAIL',
       errors: [{
         severity: 'ERROR',
-        message: err
+        message: error
       }]
     })
   })
@@ -35,14 +34,14 @@ module.exports.validate = (event, context, callback) => {
     sendError('No URL provided', null, callback)
   }
 
-  const requestPromise = request(docUrl).catch(err => {
-    sendError(err, docUrl, callback)
+  const requestPromise = request(docUrl).catch(error => {
+    sendError(error, docUrl, callback)
   })
   const validatorPromise = amphtmlValidator.getInstance()
 
   Promise.all([requestPromise, validatorPromise])
-  .spread((document, validator) => {
-    const validationResult = validator.validateString(document)
-    sendResult(docUrl, validationResult, callback)
-  })
+    .then(([document, validator]) => {
+      const validationResult = validator.validateString(document)
+      sendResult(docUrl, validationResult, callback)
+    })
 }
