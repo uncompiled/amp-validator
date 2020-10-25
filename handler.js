@@ -34,7 +34,12 @@ module.exports.validate = (event, context, callback) => {
     sendError('No URL provided', null, callback)
   }
 
-  const requestPromise = request(docUrl).catch(error => {
+  const requestPromise = request({
+    uri: docUrl,
+    headers: {
+      'User-Agent': 'Google-AMPHTML'
+    }
+  }).catch(error => {
     sendError(error, docUrl, callback)
   })
   const validatorPromise = amphtmlValidator.getInstance()
