@@ -10,6 +10,7 @@ functions:
   validate:
     handler: handler.validate
     memorySize: 512
+    timeout: 20
     events:
       - http:
           path: validate
