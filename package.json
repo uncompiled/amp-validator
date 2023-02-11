@@ -33,7 +33,7 @@
     "semicolon": false
   },
   "devDependencies": {
-    "ava": "^2.4.0",
-    "xo": "^0.25.3"
+    "ava": "^5.2.0",
+    "xo": "^0.53.1"
   }
 }
